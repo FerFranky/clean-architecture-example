@@ -148,3 +148,27 @@ Se crea un metodo ```execute``` que deber recibir nuestro ```dto``` y este debe 
 📄 Puedes encontrar el archivo del Caso de Uso CreateOrder en la siguiente ruta:
 
 [App\Application\UseCases\CreateOrder](./app/Application/UseCases/CreateOrder.php)
+
+## 6- Implementar el repositorio en infraestructura.
+
+📌 Un Repositorio es una clase que maneja la persistencia de datos y actúa como una capa intermedia entre la aplicación y la base de datos.
+
+🔨 Crear ```OrderRepository.php``` en el directorio ```app/Infrastructure/Persistence/```
+
+🔨 Dentro del archivo definimos el metodo ```save()```
+
+🔨 EL metodo anterior recibe como parametro la entidad ```Order```, hacemos una llamada al modelo y hacemos la insersion mediante eloquent y a partir del resultante se crea una instancia de la entidad y es la que se retorna, este metodo sirve como el puente entre el ORM y nuestra arquitectura limpia.
+
+### Ventajas de usar repositorios:
+
+✅ Desacopla la lógica de negocio de la lógica de persistencia.
+
+✅ Facilita cambiar la implementación (por ejemplo, de Eloquent a Redis o una API externa).
+
+✅ Hace que el código sea más limpio y fácil de probar.
+
+### Enlace al Repositorio OrderRepository
+
+📄 Puedes encontrar el archivo del repositorio OrderRepository en la siguiente ruta:
+
+[App\Infrastructure\Persistence\OrderRepository](./app/Infrastructure/Persistence/OrderRepository.php)
