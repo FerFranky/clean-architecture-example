@@ -1,3 +1,34 @@
+## Estructura esperada
+
+A continuación se describe la propuesta de directorios a utilizar para nuestro ejemplo.
+```bash
+app/
+│── Domain/
+│   ├── Entities/
+│   │   ├── Order.php
+│   ├── Repositories/
+│   │   ├── OrderRepositoryInterface.php
+│
+│── Application/
+│   ├── DTOs/
+│   │   ├── OrderDTO.php
+│   ├── UseCases/
+│   │   ├── CreateOrder.php
+│
+│── Infrastructure/
+│   ├── Persistence/
+│   │   ├── OrderRepository.php
+│
+│── Presentation/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── OrderController.php
+│   ├── Requests/
+│   │   ├── CreateOrderRequest.php
+
+```
+
+---
 ## 1- Crear la estructura de carpetas requerida
 
 📌 A partir de la raíz del proyecto, se ha propuesto la siguiente estructura de carpetas con la que implementaremos nuestra arquitectura.
@@ -81,9 +112,9 @@ mkdir -p app/Presentation/Http/Controllers app/Presentation/Requests
 
 🔨 Para nuestro ejemplo, agregaremos la entidad ```OrderDTO.php``` en el directorio ```app/Application/DTOs```.
 
-🔨 Dentro de la clase solo definiremos un objeto simple en el constructor que reciba ```$customerName``` y ```$totalAmount```
+🔨 Dentro de la clase solo definiremos un objeto simple en el constructor que reciba ```$customerName``` y ```$totalAmount```.
 
-### Beneficios del uso de DTOs?
+### Beneficios del uso de DTOs
 ✅ Evita exponer modelos de Eloquent directamente en la capa de aplicación.
 
 ✅ Asegura que los datos sean inmutables y estén validados antes de usarlos.
@@ -95,3 +126,5 @@ mkdir -p app/Presentation/Http/Controllers app/Presentation/Requests
 📄 Puedes encontrar el archivo del DTO Order en la siguiente ruta:
 
 [App\Application\DTOs\OrderDTO](./app/Application/DTOs/OrderDTO.php)
+
+---
