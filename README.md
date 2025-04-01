@@ -75,3 +75,23 @@ mkdir -p app/Presentation/Http/Controllers app/Presentation/Requests
 [App\Domain\Repositories\OrderRepositoryInterface](./app/Domain/Repositories/OrderRepositoryInterface.php)
 
 ---
+## 4- Crear un DTO
+
+📌 Un DTO (Data Transfer Object) es un objeto simple que se usa para transferir datos entre capas de la aplicación.
+
+🔨 Para nuestro ejemplo, agregaremos la entidad ```OrderDTO.php``` en el directorio ```app/Application/DTOs```.
+
+🔨 Dentro de la clase solo definiremos un objeto simple en el constructor que reciba ```$customerName``` y ```$totalAmount```
+
+### Beneficios del uso de DTOs?
+✅ Evita exponer modelos de Eloquent directamente en la capa de aplicación.
+
+✅ Asegura que los datos sean inmutables y estén validados antes de usarlos.
+
+✅ Facilita el mantenimiento y desacoplamiento entre capas.
+
+### Enlace al DTO Order
+
+📄 Puedes encontrar el archivo del DTO Order en la siguiente ruta:
+
+[App\Application\DTOs\OrderDTO](./app/Application/DTOs/OrderDTO.php)
