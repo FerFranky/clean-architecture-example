@@ -87,7 +87,7 @@ mkdir -p app/Presentation/Http/Controllers app/Presentation/Requests
 
 🔨 En este paso, creamos una interfaz para definir qué métodos tendrá nuestro repositorio, sin implementarlos todavía.
 
-🔨 Para nuestro ejemplo, agregaremos la entidad ```OrderRepositoryInterface.php``` en el directorio ```app/Domain/Repositories```.
+🔨 Para nuestro ejemplo, agregaremos el archivo ```OrderRepositoryInterface.php``` en el directorio ```app/Domain/Repositories```.
  
 🔨 Dentro de nuestra clase, definiremos una función llamada ```save()``` (para nuestro ejemplo). Dicha función debe recibir como parámetro una ```Entidad``` de tipo ```Order``` (la creamos en el paso anterior) y su retorno debe ser, de la misma manera, la ```Entidad Order```.
 
@@ -110,7 +110,7 @@ mkdir -p app/Presentation/Http/Controllers app/Presentation/Requests
 
 📌 Un DTO (Data Transfer Object) es un objeto simple que se usa para transferir datos entre capas de la aplicación.
 
-🔨 Para nuestro ejemplo, agregaremos la entidad ```OrderDTO.php``` en el directorio ```app/Application/DTOs```.
+🔨 Para nuestro ejemplo, agregaremos el archivo ```OrderDTO.php``` en el directorio ```app/Application/DTOs```.
 
 🔨 Dentro de la clase solo definiremos un objeto simple en el constructor que reciba ```$customerName``` y ```$totalAmount```.
 
@@ -128,3 +128,23 @@ mkdir -p app/Presentation/Http/Controllers app/Presentation/Requests
 [App\Application\DTOs\OrderDTO](./app/Application/DTOs/OrderDTO.php)
 
 ---
+## 5- Crear un Caso de Uso.
+
+📌 Un Caso de Uso es una clase de aplicación que contiene la lógica para ejecutar una acción específica.
+
+🔨 Para nuestro ejemplo, agregaremos el archivo ```CreateOrder.php``` en el directorio ```/app/Application/UseCases/CreateOrder.php```.
+
+🔨 Lo primero es que nuestra clase debe recibir una instancia de la interfaz del repositorio (Se recomienda por inyeccion de dependencias para no depender de una implementacion especifica).
+
+Se crea un metodo ```execute``` que deber recibir nuestro ```dto``` y este debe ser utilidado para crear una instancia de la ```entidad``` con los datos que contenga y finalmente de debe retornar el metodo ```save``` contenido de la instancia que viene a partir de la ```interfaz```.
+
+### Beneficios de un caso de uso:
+✅ Separa la lógica de negocio de los controladores y repositorios.
+✅ Hace el código más reutilizable y fácil de probar.
+✅ Permite cambiar la implementación sin afectar el resto del sistema.
+
+### Enlace al Caso de Uso CreateOrder
+
+📄 Puedes encontrar el archivo del Caso de Uso CreateOrder en la siguiente ruta:
+
+[App\Application\UseCases\CreateOrder](./app/Application/UseCases/CreateOrder.php)
