@@ -10,9 +10,9 @@ class OrderStatusController
     public function __construct(private GetOrdersByStatus $getOrdersByStatus) {}
 
     public function index(string $status): JsonResponse
-{
-    $orders = $this->getOrdersByStatus->execute($status);
+    {
+        $orders = $this->getOrdersByStatus->execute($status);
 
-    return response()->json($orders);
-}
+        return response()->json($orders);
+    }
 }

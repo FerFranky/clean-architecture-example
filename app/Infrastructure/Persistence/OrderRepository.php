@@ -9,24 +9,17 @@ use Illuminate\Support\Facades\DB;
 
 class OrderRepository implements OrderRepositoryInterface
 {
-    public function save(Order $order): Order
+    public function findAll(): array
     {
-        return DB::transaction(function () use ($order) {
-            $model = OrderModel::create([
-                'customer_name' => $order->customerName,
-                'total_amount' => $order->totalAmount,
-                'status' => $order->status,
-            ]);
-
-            return new Order(
+        return OrderModel::get()
+            ->map(fn($model) => new Order(
                 id: $model->id,
                 customerName: $model->customer_name,
                 totalAmount: $model->total_amount,
                 status: $model->status
-            );
-        });
+            ))->toArray();
     }
-
+    
     public function findById(int $id): ?Order
     {
         $model = OrderModel::findOrFail($id);
@@ -49,5 +42,23 @@ class OrderRepository implements OrderRepositoryInterface
                 totalAmount: $model->total_amount,
                 status: $model->status
             ))->toArray();
+    }
+
+    public function save(Order $order): Order
+    {
+        return DB::transaction(function () use ($order) {
+            $model = OrderModel::create([
+                'customer_name' => $order->customerName,
+                'total_amount' => $order->totalAmount,
+                'status' => $order->status,
+            ]);
+
+            return new Order(
+                id: $model->id,
+                customerName: $model->customer_name,
+                totalAmount: $model->total_amount,
+                status: $model->status
+            );
+        });
     }
 }

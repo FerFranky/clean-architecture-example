@@ -4,13 +4,25 @@ namespace App\Presentation\Http\Controllers;
 
 use App\Application\DTOs\OrderDTO;
 use App\Application\UseCases\CreateOrder;
+use App\Application\UseCases\GetAllOrders;
 use App\Application\UseCases\GetOrdersById;
 use App\Presentation\Requests\CreateOrderRequest;
 use Illuminate\Http\JsonResponse;
 
 class OrderController
 {
-    public function __construct(private CreateOrder $createOrder, private GetOrdersById $getOrderById) {}
+    public function __construct(
+        private CreateOrder $createOrder,
+        private GetOrdersById $getOrderById,
+        private GetAllOrders $getAllOrders
+    ) {}
+
+    public function index(): JsonResponse
+    {
+        $orders = $this->getAllOrders->execute();
+
+        return response()->json($orders);
+    }
 
     public function show(int $id): JsonResponse
     {
