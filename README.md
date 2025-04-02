@@ -1,3 +1,32 @@
+# 🏗️ Clean Architecture Example in Laravel
+
+## Índice
+
+1. [Introducción](#introducción)
+2. [Estructura esperada](#estructura-esperada)
+3. [Crear la estructura de carpetas requerida](#1--crear-la-estructura-de-carpetas-requerida)
+4. [Agregar entidades al Dominio](#2--agregar-entidades-al-dominio)
+5. [Crear el contrato del repositorio](#3--crear-el-contrato-del-repositorio)
+6. [Crear un DTO](#4--crear-un-dto)
+7. [Crear un Caso de Uso](#5--crear-un-caso-de-uso)
+8. [Implementar el repositorio en infraestructura](#6--implementar-el-repositorio-en-infraestructura)
+9. [Crear el controlador para exponer la funcionalidad](#7--crear-el-controlador-para-exponer-la-funcionalidad)
+10. [Registrar el repositorio en Laravel](#8--registrar-el-repositorio-en-laravel)
+
+---
+
+## Introducción
+
+Este proyecto es un ejemplo práctico de cómo implementar la Arquitectura Limpia en Laravel. La Arquitectura Limpia, también conocida como "Clean Architecture", es un enfoque que busca separar las responsabilidades de las diferentes capas de una aplicación, promoviendo un código más limpio, desacoplado y fácil de mantener.
+
+En este ejemplo, se implementa una funcionalidad básica para gestionar órdenes, siguiendo los principios de la Arquitectura Limpia. Cada capa tiene un propósito claro:
+
+- **Dominio**: Contiene las reglas de negocio y las entidades puras.
+- **Aplicación**: Maneja los casos de uso y la lógica de aplicación.
+- **Infraestructura**: Implementa la persistencia de datos y otras dependencias externas.
+- **Presentación**: Expone la funcionalidad a través de controladores y validaciones.
+
+A lo largo de este documento, se describen los pasos necesarios para construir esta arquitectura, desde la creación de la estructura de carpetas hasta la implementación de cada componente clave. Este enfoque asegura que el código sea flexible, escalable y fácil de probar.
 ## Estructura esperada
 
 A continuación se describe la propuesta de directorios a utilizar para nuestro ejemplo.
@@ -209,3 +238,20 @@ Se crea un metodo ```execute``` que deber recibir nuestro ```dto``` y este debe 
 📄 Puedes encontrar el archivo del Request CreateOrderRequest en la siguiente ruta:
 
 [App\Presentation\Requests\CreateOrderRequest](./app/Presentation/Requests/CreateOrderRequest.php)
+
+## 8- Registrar el repositorio en Laravel
+
+🔨 Agregar en el archivo ```AppServiceProvider.php``` dentro del metodo ```register()``` el siguiente metodo:
+
+```php
+$this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
+```
+🔨 Esto lo que hace es que cada que se instancie la Interfaz en automatico cargara la implementacion de nuestro Repository
+
+📌 Esto sirve para registrar dependencias y hacer uso de las mismas siempre que se necesite pero de manera desacoplada a travez de inyeccion de dependencias.
+
+### Enlace al AppServiceProvider
+
+📄 Puedes encontrar el archivo AppServiceProvider en la siguiente ruta:
+
+[App\Providers\AppServiceProvider](./app/Providers/AppServiceProvider.php)
