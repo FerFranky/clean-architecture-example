@@ -172,3 +172,40 @@ Se crea un metodo ```execute``` que deber recibir nuestro ```dto``` y este debe 
 📄 Puedes encontrar el archivo del repositorio OrderRepository en la siguiente ruta:
 
 [App\Infrastructure\Persistence\OrderRepository](./app/Infrastructure/Persistence/OrderRepository.php)
+
+## 7- Crear el controlador para exponer la funcionalidad
+
+📌 En Arquitectura Limpia, un controlador es una capa que recibe peticiones HTTP y las delega a los Casos de Uso.
+
+🔨 Crear ```OrderController.php``` en el directorio ```app/Presentation/Http/Controllers/```
+
+🔨 Dentro definimos el metodo ```store()``` y dentro del mismo llenamos el DTO con el request y se lo pasamos al caso de uso
+
+### Caracteristicas.
+
+✅ NO debe contener lógica de negocio.
+
+✅ Solo debe validar la entrada y manejar la respuesta.
+
+✅ Debe llamar al caso de uso correspondiente.
+
+### Beneficios de este enfoque
+✅ El controlador es simple y solo maneja la comunicación HTTP.
+
+✅ No hay lógica de negocio en el controlador.
+
+✅ Podemos cambiar la implementación sin modificar el controlador.
+
+📌 Adicional puedes agregar un request validator de los que son provistos por Laravel para un mejor control.
+
+### Enlace al Controlador OrderController
+
+📄 Puedes encontrar el archivo del controlador OrderController en la siguiente ruta:
+
+[App\Presentation\Http\Controllers\OrderController](./app/Presentation/Http/Controllers/OrderController.php)
+
+### Enlace al Request CreateOrderRequest
+
+📄 Puedes encontrar el archivo del Request CreateOrderRequest en la siguiente ruta:
+
+[App\Presentation\Requests\CreateOrderRequest](./app/Presentation/Requests/CreateOrderRequest.php)
