@@ -4,6 +4,7 @@ namespace App\Presentation\Http\Controllers;
 
 use App\Application\DTOs\OrderDTO;
 use App\Application\UseCases\CreateOrder;
+use App\Application\UseCases\DeleteOrderById;
 use App\Application\UseCases\GetAllOrders;
 use App\Application\UseCases\GetOrdersById;
 use App\Presentation\Requests\CreateOrderRequest;
@@ -12,9 +13,10 @@ use Illuminate\Http\JsonResponse;
 class OrderController
 {
     public function __construct(
-        private CreateOrder $createOrder,
         private GetOrdersById $getOrderById,
-        private GetAllOrders $getAllOrders
+        private GetAllOrders $getAllOrders,
+        private CreateOrder $createOrder,
+        private DeleteOrderById $deleteOrderById,
     ) {}
 
     public function index(): JsonResponse
@@ -51,5 +53,12 @@ class OrderController
             'total_amount' => $order->totalAmount,
             'status' => $order->status,
         ]);
+    }
+
+    public function destroy(int $id)
+    {
+        $this->deleteOrderById->execute($id);
+
+        return response()->noContent();
     }
 }

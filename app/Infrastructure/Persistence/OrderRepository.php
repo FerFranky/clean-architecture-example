@@ -19,7 +19,7 @@ class OrderRepository implements OrderRepositoryInterface
                 status: $model->status
             ))->toArray();
     }
-    
+
     public function findById(int $id): ?Order
     {
         $model = OrderModel::findOrFail($id);
@@ -60,5 +60,11 @@ class OrderRepository implements OrderRepositoryInterface
                 status: $model->status
             );
         });
+    }
+
+    public function delete(int $id): bool
+    {
+        $this->findById($id);
+        return OrderModel::destroy($id);
     }
 }
