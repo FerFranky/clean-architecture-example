@@ -3,7 +3,7 @@
 namespace App\Application\UseCases\Order;
 
 use App\Application\DTOs\Order\OrderStatusDTO;
-use App\Domain\Entities\OrderEntity\Order;
+use App\Domain\Entities\Order\Order;
 use App\Domain\Repositories\Order\OrderRepositoryInterface;
 
 class ChangeStatusOrder

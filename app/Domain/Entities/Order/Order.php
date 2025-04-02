@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Entities\OrderEntity;
+namespace App\Domain\Entities\Order;
 
 class Order
 {

@@ -34,7 +34,7 @@ A continuación se describe la propuesta de directorios a utilizar para nuestro 
 app/
 │── Domain/
 │   ├── Entities/
-│   │   ├── OrderEntity/
+│   │   ├── Order/
 │   │   │   ├── Order.php
 │   ├── Repositories/
 │   │   ├── Order/
@@ -77,7 +77,7 @@ mkdir -p app/Presentation/Http/Controllers app/Presentation/Requests
 ```
 ---
 ## 2- Agregar entidades al Dominio
-🔨 Para nuestro ejemplo, agregaremos la entidad ```Order.php``` en el directorio ```app/Domain/Entities/OrderEntity```.
+🔨 Para nuestro ejemplo, agregaremos la entidad ```Order.php``` en el directorio ```app/Domain/Entities/Order```.
 
 🔨 Dentro, definiremos una función ```create()```, la cual se encargará de construir la entidad del negocio, a la vez que estará fuertemente desacoplada del framework.
 
@@ -114,7 +114,7 @@ mkdir -p app/Presentation/Http/Controllers app/Presentation/Requests
 
 📄 Puedes encontrar el archivo de la entidad Order en la siguiente ruta:
 
-[App\Domain\Entities\OrderEntity\Order](./app/Domain/Entities/OrderEntity/Order.php)
+[App\Domain\Entities\Order\Order](./app/Domain/Entities/Order/Order.php)
 
 ---
 
