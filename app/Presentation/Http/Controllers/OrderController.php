@@ -9,7 +9,8 @@ use App\Application\UseCases\GetAllOrders;
 use App\Application\UseCases\GetOrdersById;
 use App\Application\UseCases\UpdateOrder;
 use App\Presentation\Requests\CreateOrderRequest;
-use Illuminate\Http\JsonResponse;
+use App\Presentation\Resources\Order\OrderResource;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class OrderController
 {
@@ -21,26 +22,20 @@ class OrderController
         private DeleteOrderById $deleteOrderById,
     ) {}
 
-    public function index(): JsonResponse
+    public function index(): AnonymousResourceCollection
     {
         $orders = $this->getAllOrders->execute();
 
-        return response()->json($orders);
+        return OrderResource::collection($orders);
     }
 
-    public function show(int $id): JsonResponse
+    public function show(int $id): OrderResource
     {
         $order = $this->getOrderById->execute($id);
-
-        return response()->json([
-            'id' => $order->id,
-            'customer_name' => $order->customerName,
-            'total_amount' => $order->totalAmount,
-            'status' => $order->status,
-        ]);
+        return OrderResource::make($order);
     }
 
-    public function store(CreateOrderRequest $request): JsonResponse
+    public function store(CreateOrderRequest $request): OrderResource
     {
         $dto = new OrderDTO(
             customerName: $request->customer_name,
@@ -49,15 +44,10 @@ class OrderController
 
         $order = $this->createOrder->execute($dto);
 
-        return response()->json([
-            'id' => $order->id,
-            'customer_name' => $order->customerName,
-            'total_amount' => $order->totalAmount,
-            'status' => $order->status,
-        ]);
+        return OrderResource::make($order);
     }
 
-    public function update(int $id, CreateOrderRequest $request): JsonResponse
+    public function update(int $id, CreateOrderRequest $request): OrderResource
     {
         $dto = new OrderDTO(
             customerName: $request->customer_name,
@@ -66,12 +56,7 @@ class OrderController
 
         $order = $this->updateOrder->execute($id, $dto);
 
-        return response()->json([
-            'id' => $order->id,
-            'customer_name' => $order->customerName,
-            'total_amount' => $order->totalAmount,
-            'status' => $order->status,
-        ]);
+        return OrderResource::make($order);
     }
 
     public function destroy(int $id)
