@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Presentation\Http\Controllers;
+namespace App\Presentation\Http\Controllers\Order;
 
-use App\Application\UseCases\GetOrdersByStatus;
+use App\Application\UseCases\Order\GetOrdersByStatus;
 use App\Presentation\Resources\Order\OrderResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 

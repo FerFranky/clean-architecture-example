@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Presentation\Requests;
+namespace App\Presentation\Requests\Order;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateOrderRequest extends FormRequest
+class OrderRequest extends FormRequest
 {
     public function rules(): array
     {

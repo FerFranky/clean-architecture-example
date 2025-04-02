@@ -34,26 +34,33 @@ A continuación se describe la propuesta de directorios a utilizar para nuestro 
 app/
 │── Domain/
 │   ├── Entities/
-│   │   ├── Order.php
+│   │   ├── OrderEntity/
+│   │   │   ├── Order.php
 │   ├── Repositories/
-│   │   ├── OrderRepositoryInterface.php
+│   │   ├── Order/
+│   │   │   ├── OrderRepositoryInterface.php
 │
 │── Application/
 │   ├── DTOs/
-│   │   ├── OrderDTO.php
+│   │   ├── Order/
+│   │   │   ├── OrderDTO.php
 │   ├── UseCases/
-│   │   ├── CreateOrder.php
+│   │   ├── Order/
+│   │   │   ├── CreateOrder.php
 │
 │── Infrastructure/
 │   ├── Persistence/
-│   │   ├── OrderRepository.php
+│   │   ├── Order/
+│   │   │   ├── OrderRepository.php
 │
 │── Presentation/
 │   ├── Http/
 │   │   ├── Controllers/
-│   │   │   ├── OrderController.php
+│   │   │   ├── Order/
+│   │   │   │   ├── OrderController.php
 │   ├── Requests/
-│   │   ├── CreateOrderRequest.php
+│   │   │   ├── Order/
+│   │   │   │   ├── CreateOrderRequest.php
 
 ```
 
@@ -70,7 +77,7 @@ mkdir -p app/Presentation/Http/Controllers app/Presentation/Requests
 ```
 ---
 ## 2- Agregar entidades al Dominio
-🔨 Para nuestro ejemplo, agregaremos la entidad ```Order.php``` en el directorio ```app/Domain/Entities```.
+🔨 Para nuestro ejemplo, agregaremos la entidad ```Order.php``` en el directorio ```app/Domain/Entities/OrderEntity```.
 
 🔨 Dentro, definiremos una función ```create()```, la cual se encargará de construir la entidad del negocio, a la vez que estará fuertemente desacoplada del framework.
 
@@ -107,7 +114,7 @@ mkdir -p app/Presentation/Http/Controllers app/Presentation/Requests
 
 📄 Puedes encontrar el archivo de la entidad Order en la siguiente ruta:
 
-[App\Domain\Entities\Order](./app/Domain/Entities/Order.php)
+[App\Domain\Entities\OrderEntity\Order](./app/Domain/Entities/OrderEntity/Order.php)
 
 ---
 
@@ -116,7 +123,7 @@ mkdir -p app/Presentation/Http/Controllers app/Presentation/Requests
 
 🔨 En este paso, creamos una interfaz para definir qué métodos tendrá nuestro repositorio, sin implementarlos todavía.
 
-🔨 Para nuestro ejemplo, agregaremos el archivo ```OrderRepositoryInterface.php``` en el directorio ```app/Domain/Repositories```.
+🔨 Para nuestro ejemplo, agregaremos el archivo ```OrderRepositoryInterface.php``` en el directorio ```app/Domain/Repositories/Order```.
  
 🔨 Dentro de nuestra clase, definiremos una función llamada ```save()``` (para nuestro ejemplo). Dicha función debe recibir como parámetro una ```Entidad``` de tipo ```Order``` (la creamos en el paso anterior) y su retorno debe ser, de la misma manera, la ```Entidad Order```.
 
@@ -132,14 +139,14 @@ mkdir -p app/Presentation/Http/Controllers app/Presentation/Requests
 
 📄 Puedes encontrar el archivo del contrato del repositorio en la siguiente ruta:
 
-[App\Domain\Repositories\OrderRepositoryInterface](./app/Domain/Repositories/OrderRepositoryInterface.php)
+[App\Domain\Repositories\Order\OrderRepositoryInterface](./app/Domain/Repositories/Order/OrderRepositoryInterface.php)
 
 ---
 ## 4- Crear un DTO
 
 📌 Un DTO (Data Transfer Object) es un objeto simple que se usa para transferir datos entre capas de la aplicación.
 
-🔨 Para nuestro ejemplo, agregaremos el archivo ```OrderDTO.php``` en el directorio ```app/Application/DTOs```.
+🔨 Para nuestro ejemplo, agregaremos el archivo ```OrderDTO.php``` en el directorio ```app/Application/DTOs/Order```.
 
 🔨 Dentro de la clase solo definiremos un objeto simple en el constructor que reciba ```$customerName``` y ```$totalAmount```.
 
@@ -154,14 +161,14 @@ mkdir -p app/Presentation/Http/Controllers app/Presentation/Requests
 
 📄 Puedes encontrar el archivo del DTO Order en la siguiente ruta:
 
-[App\Application\DTOs\OrderDTO](./app/Application/DTOs/OrderDTO.php)
+[App\Application\DTOs\Order\OrderDTO](./app/Application/DTOs/Order/OrderDTO.php)
 
 ---
 ## 5- Crear un Caso de Uso.
 
 📌 Un Caso de Uso es una clase de aplicación que contiene la lógica para ejecutar una acción específica.
 
-🔨 Para nuestro ejemplo, agregaremos el archivo ```CreateOrder.php``` en el directorio ```/app/Application/UseCases/CreateOrder.php```.
+🔨 Para nuestro ejemplo, agregaremos el archivo ```CreateOrder.php``` en el directorio ```/app/Application/UseCases/Order/CreateOrder.php```.
 
 🔨 Lo primero es que nuestra clase debe recibir una instancia de la interfaz del repositorio (Se recomienda por inyeccion de dependencias para no depender de una implementacion especifica).
 
@@ -176,13 +183,13 @@ Se crea un metodo ```execute``` que deber recibir nuestro ```dto``` y este debe 
 
 📄 Puedes encontrar el archivo del Caso de Uso CreateOrder en la siguiente ruta:
 
-[App\Application\UseCases\CreateOrder](./app/Application/UseCases/CreateOrder.php)
+[App\Application\UseCases\Order\CreateOrder](./app/Application/UseCases/Order/CreateOrder.php)
 
 ## 6- Implementar el repositorio en infraestructura.
 
 📌 Un Repositorio es una clase que maneja la persistencia de datos y actúa como una capa intermedia entre la aplicación y la base de datos.
 
-🔨 Crear ```OrderRepository.php``` en el directorio ```app/Infrastructure/Persistence/```
+🔨 Crear ```OrderRepository.php``` en el directorio ```app/Infrastructure/Persistence/Order/```
 
 🔨 Dentro del archivo definimos el metodo ```save()```
 
@@ -200,13 +207,13 @@ Se crea un metodo ```execute``` que deber recibir nuestro ```dto``` y este debe 
 
 📄 Puedes encontrar el archivo del repositorio OrderRepository en la siguiente ruta:
 
-[App\Infrastructure\Persistence\OrderRepository](./app/Infrastructure/Persistence/OrderRepository.php)
+[App\Infrastructure\Persistence\Order\OrderRepository](./app/Infrastructure/Persistence/Order/OrderRepository.php)
 
 ## 7- Crear el controlador para exponer la funcionalidad
 
 📌 En Arquitectura Limpia, un controlador es una capa que recibe peticiones HTTP y las delega a los Casos de Uso.
 
-🔨 Crear ```OrderController.php``` en el directorio ```app/Presentation/Http/Controllers/```
+🔨 Crear ```OrderController.php``` en el directorio ```app/Presentation/Http/Controllers/Order/```
 
 🔨 Dentro definimos el metodo ```store()``` y dentro del mismo llenamos el DTO con el request y se lo pasamos al caso de uso
 
@@ -231,13 +238,13 @@ Se crea un metodo ```execute``` que deber recibir nuestro ```dto``` y este debe 
 
 📄 Puedes encontrar el archivo del controlador OrderController en la siguiente ruta:
 
-[App\Presentation\Http\Controllers\OrderController](./app/Presentation/Http/Controllers/OrderController.php)
+[App\Presentation\Http\Controllers\Order\OrderController](./app/Presentation/Http/Controllers/Order/OrderController.php)
 
 ### Enlace al Request CreateOrderRequest
 
 📄 Puedes encontrar el archivo del Request CreateOrderRequest en la siguiente ruta:
 
-[App\Presentation\Requests\CreateOrderRequest](./app/Presentation/Requests/CreateOrderRequest.php)
+[App\Presentation\Requests\Order\OrderRequest](./app/Presentation/Requests/Order/OrderRequest.php)
 
 ## 8- Registrar el repositorio en Laravel
 

@@ -1,7 +1,7 @@
 <?php
 
-use App\Presentation\Http\Controllers\OrderController;
-use App\Presentation\Http\Controllers\OrderStatusController;
+use App\Presentation\Http\Controllers\Order\OrderController;
+use App\Presentation\Http\Controllers\Order\OrderStatusController;
 use Illuminate\Support\Facades\Route;
 
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Infrastructure\Persistence;
+namespace App\Infrastructure\Persistence\Order;
 
-use App\Domain\Entities\Order;
-use App\Domain\Repositories\OrderRepositoryInterface;
+use App\Domain\Entities\OrderEntity\Order;
+use App\Domain\Repositories\Order\OrderRepositoryInterface;
 use App\Models\Order as OrderModel;
 use Illuminate\Support\Facades\DB;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Application\UseCases;
+namespace App\Application\UseCases\Order;
 
-use App\Application\DTOs\OrderDTO;
-use App\Domain\Entities\Order;
-use App\Domain\Repositories\OrderRepositoryInterface;
+use App\Application\DTOs\Order\OrderDTO;
+use App\Domain\Entities\OrderEntity\Order;
+use App\Domain\Repositories\Order\OrderRepositoryInterface;
 
 class CreateOrder
 {

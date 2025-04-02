@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Presentation\Http\Controllers;
+namespace App\Presentation\Http\Controllers\Order;
 
-use App\Application\DTOs\OrderDTO;
-use App\Application\UseCases\CreateOrder;
-use App\Application\UseCases\DeleteOrderById;
-use App\Application\UseCases\GetAllOrders;
-use App\Application\UseCases\GetOrdersById;
-use App\Application\UseCases\UpdateOrder;
-use App\Presentation\Requests\CreateOrderRequest;
+use App\Application\DTOs\Order\OrderDTO;
+use App\Application\UseCases\Order\CreateOrder;
+use App\Application\UseCases\Order\DeleteOrderById;
+use App\Application\UseCases\Order\GetAllOrders;
+use App\Application\UseCases\Order\GetOrdersById;
+use App\Application\UseCases\Order\UpdateOrder;
+use App\Presentation\Requests\Order\OrderRequest;
 use App\Presentation\Resources\Order\OrderResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-
 class OrderController
 {
     public function __construct(
@@ -35,7 +34,7 @@ class OrderController
         return OrderResource::make($order);
     }
 
-    public function store(CreateOrderRequest $request): OrderResource
+    public function store(OrderRequest $request): OrderResource
     {
         $dto = new OrderDTO(
             customerName: $request->customer_name,
@@ -47,7 +46,7 @@ class OrderController
         return OrderResource::make($order);
     }
 
-    public function update(int $id, CreateOrderRequest $request): OrderResource
+    public function update(int $id, OrderRequest $request): OrderResource
     {
         $dto = new OrderDTO(
             customerName: $request->customer_name,
