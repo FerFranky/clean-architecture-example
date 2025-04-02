@@ -62,6 +62,25 @@ class OrderRepository implements OrderRepositoryInterface
         });
     }
 
+    public function update(int $id, Order $order): Order
+    {
+        return DB::transaction(function () use ($id, $order) {
+            $model = OrderModel::findOrFail($id);
+
+            $model->update([
+                'customer_name' => $order->customerName,
+                'total_amount' => $order->totalAmount,
+            ]);
+
+            return new Order(
+                id: $model->id,
+                customerName: $model->customer_name,
+                totalAmount: $model->total_amount,
+                status: $model->status
+            );
+        });
+    }
+
     public function delete(int $id): bool
     {
         $this->findById($id);
