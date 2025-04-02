@@ -17,7 +17,7 @@ class OrderRepository implements OrderRepositoryInterface
                 'total_amount' => $order->totalAmount,
                 'status' => $order->status,
             ]);
-    
+
             return new Order(
                 id: $model->id,
                 customerName: $model->customer_name,
@@ -25,5 +25,29 @@ class OrderRepository implements OrderRepositoryInterface
                 status: $model->status
             );
         });
+    }
+
+    public function findById(int $id): ?Order
+    {
+        $model = OrderModel::findOrFail($id);
+
+        return $model ? new Order(
+            id: $model->id,
+            customerName: $model->customer_name,
+            totalAmount: $model->total_amount,
+            status: $model->status
+        ) : null;
+    }
+
+    public function findByStatus(string $status): array
+    {
+        return OrderModel::where('status', $status)
+            ->get()
+            ->map(fn($model) => new Order(
+                id: $model->id,
+                customerName: $model->customer_name,
+                totalAmount: $model->total_amount,
+                status: $model->status
+            ))->toArray();
     }
 }
