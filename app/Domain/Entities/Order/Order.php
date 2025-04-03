@@ -6,9 +6,9 @@ class Order
 {
     public function __construct(
         public readonly int $id,
-        public readonly string|null $customerName,
-        public readonly float|null $totalAmount,
-        public readonly string|null $status
+        public readonly ?string $customerName,
+        public readonly ?float $totalAmount,
+        public readonly ?string $status
     ) {}
 
     public static function create(string $customerName, float $totalAmount): self

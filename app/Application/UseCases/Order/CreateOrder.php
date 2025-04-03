@@ -13,6 +13,7 @@ class CreateOrder
     public function execute(OrderDTO $dto): Order
     {
         $order = Order::create($dto->customerName, $dto->totalAmount);
+
         return $this->orderRepository->save($order);
     }
 }

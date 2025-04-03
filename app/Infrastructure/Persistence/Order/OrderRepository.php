@@ -12,7 +12,7 @@ class OrderRepository implements OrderRepositoryInterface
     public function findAll(): array
     {
         return OrderModel::get()
-            ->map(fn($model) => new Order(
+            ->map(fn ($model) => new Order(
                 id: $model->id,
                 customerName: $model->customer_name,
                 totalAmount: $model->total_amount,
@@ -36,7 +36,7 @@ class OrderRepository implements OrderRepositoryInterface
     {
         return OrderModel::where('status', $status)
             ->get()
-            ->map(fn($model) => new Order(
+            ->map(fn ($model) => new Order(
                 id: $model->id,
                 customerName: $model->customer_name,
                 totalAmount: $model->total_amount,
@@ -102,6 +102,7 @@ class OrderRepository implements OrderRepositoryInterface
     public function delete(int $id): bool
     {
         $this->findById($id);
+
         return OrderModel::destroy($id);
     }
 }

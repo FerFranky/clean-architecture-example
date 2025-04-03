@@ -14,7 +14,7 @@ class OrderStatusController
     public function __construct(
         private GetOrdersByStatus $getOrdersByStatus,
         private ChangeStatusOrder $changeStatusOrder,
-        ) {}
+    ) {}
 
     public function index(string $status): AnonymousResourceCollection
     {

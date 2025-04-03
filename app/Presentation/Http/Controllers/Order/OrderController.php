@@ -11,6 +11,7 @@ use App\Application\UseCases\Order\UpdateOrder;
 use App\Presentation\Requests\Order\OrderRequest;
 use App\Presentation\Resources\Order\OrderResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+
 class OrderController
 {
     public function __construct(
@@ -31,6 +32,7 @@ class OrderController
     public function show(int $id): OrderResource
     {
         $order = $this->getOrderById->execute($id);
+
         return OrderResource::make($order);
     }
 

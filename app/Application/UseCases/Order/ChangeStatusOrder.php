@@ -13,6 +13,7 @@ class ChangeStatusOrder
     public function execute(int $id, OrderStatusDTO $dto): Order
     {
         $order = Order::changeStatus($dto->status);
+
         return $this->orderRepository->changeStatus($id, $order);
     }
 }

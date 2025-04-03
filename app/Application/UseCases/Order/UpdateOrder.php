@@ -13,6 +13,7 @@ class UpdateOrder
     public function execute(int $id, OrderDTO $dto): Order
     {
         $order = Order::update($dto->customerName, $dto->totalAmount);
+
         return $this->orderRepository->update($id, $order);
     }
 }
