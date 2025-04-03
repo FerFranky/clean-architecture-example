@@ -2,16 +2,17 @@
 
 ## Índice
 
-1. [Introducción](#introducción)
-2. [Estructura esperada](#estructura-esperada)
-3. [Crear la estructura de carpetas requerida](#1--crear-la-estructura-de-carpetas-requerida)
-4. [Agregar entidades al Dominio](#2--agregar-entidades-al-dominio)
-5. [Crear el contrato del repositorio](#3--crear-el-contrato-del-repositorio)
-6. [Crear un DTO](#4--crear-un-dto)
-7. [Crear un Caso de Uso](#5--crear-un-caso-de-uso)
-8. [Implementar el repositorio en infraestructura](#6--implementar-el-repositorio-en-infraestructura)
-9. [Crear el controlador para exponer la funcionalidad](#7--crear-el-controlador-para-exponer-la-funcionalidad)
-10. [Registrar el repositorio en Laravel](#8--registrar-el-repositorio-en-laravel)
+1. [Ejecutar el proyecto con docker](#ejecutar-el-proyecto-con-docker)
+2. [Introducción](#introducción)
+3. [Estructura esperada](#estructura-esperada)
+4. [Crear la estructura de carpetas requerida](#1--crear-la-estructura-de-carpetas-requerida)
+5. [Agregar entidades al Dominio](#2--agregar-entidades-al-dominio)
+6. [Crear el contrato del repositorio](#3--crear-el-contrato-del-repositorio)
+7. [Crear un DTO](#4--crear-un-dto)
+8. [Crear un Caso de Uso](#5--crear-un-caso-de-uso)
+9. [Implementar el repositorio en infraestructura](#6--implementar-el-repositorio-en-infraestructura)
+10. [Crear el controlador para exponer la funcionalidad](#7--crear-el-controlador-para-exponer-la-funcionalidad)
+11. [Registrar el repositorio en Laravel](#8--registrar-el-repositorio-en-laravel)
 
 ---
 ## Ejecutar el proyecto con docker
