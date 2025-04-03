@@ -14,6 +14,23 @@
 10. [Registrar el repositorio en Laravel](#8--registrar-el-repositorio-en-laravel)
 
 ---
+## Ejecutar el proyecto con docker
+### 1- Construir la imagen
+```bash
+docker-compose up -d --build
+```
+### 2- Instalar dependencias
+```bash
+docker exec -it laravel_app composer install
+docker exec -it laravel_app php artisan key:generate
+docker exec -it laravel_app php artisan migrate --seed
+```
+### 3- Acceder al contenedor (Si se desea).
+```bash
+docker exec -it laravel_app bash
+```
+
+---
 
 ## Introducción
 
