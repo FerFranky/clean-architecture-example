@@ -30,6 +30,10 @@ docker exec -it laravel_app php artisan migrate --seed
 ```bash
 docker exec -it laravel_app bash
 ```
+### 4- Ejecutar test y generar reporte de coverage
+```bash
+docker exec -it laravel_app php artisan test --coverage-html report-coverage
+```
 
 ---
 
